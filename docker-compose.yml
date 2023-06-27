@@ -1,0 +1,25 @@
+# https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects
+version: '3.5'
+services:
+  camera-presence:
+    container_name: camera-presence
+    image: camera-presence
+    networks:
+      - tcc_net
+    build:
+      context: .
+    volumes:
+      - .:/workspace:cached
+    devices:
+      - /dev/video0:/dev/video0
+    ports:
+        - 5000:5000
+    command: sleep infinity
+    restart: unless-stopped
+
+
+networks:
+  tcc_net:
+    name: tcc_net
+    driver: bridge
+
