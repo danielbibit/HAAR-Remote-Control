@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>LIA</title>
+</head>
+
+<body>
+    <h1>LIA</h1>
+
+    <img style="-webkit-user-select: none;margin: auto;" src="http://liacar:5000/video_feed/test" width="640" height="480">
+    <!-- <img style="display: block;-webkit-user-select: none;margin: auto;" src="http://liacar:5000/video_feed/test" width="276" height="207"> -->
+    <br><br><br>
+    <button type="button" onclick="getFoward()">Go Foward</button>
+    <br><br><br>
+    <button type="button" onclick="getBackwards()">Go Back</button>
+
+    <script>
+        function getFoward(){
+            console.log('Foward button clicked')
+            fetch('http://liacar:5000/motor/front')
+        }
+
+        function getBackwards(){
+            console.log('Backward button clicked')
+            fetch('http://liacar:5000/motor/back')
+        }
+    </script>
+</body>
+</html>

@@ -10,8 +10,6 @@ packages = [{include = "camera_presence"}]
 python = "^3.8"
 flask = "^2.2.2"
 opencv-python = "^4.6.0.66"
-paho-mqtt = "^1.6.1"
-dlib = "^19.24.0"
 pyyaml = "^6.0"
 
 [build-system]

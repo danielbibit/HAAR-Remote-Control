@@ -10,6 +10,8 @@ RUN apt install -y \
     cmake \
     pkg-config
 
+RUN apt install -y rustc
+
 RUN pip install poetry
 
 RUN poetry config virtualenvs.create false
