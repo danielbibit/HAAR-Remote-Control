@@ -6,22 +6,29 @@
 <body>
     <h1>LIA</h1>
 
-    <img style="-webkit-user-select: none;margin: auto;" src="http://liacar:5000/video_feed/test" width="640" height="480">
+    <img id="camera_view" style="-webkit-user-select: none;margin: auto;" src="foobar" width="640" height="480">
     <!-- <img style="display: block;-webkit-user-select: none;margin: auto;" src="http://liacar:5000/video_feed/test" width="276" height="207"> -->
     <br><br><br>
-    <button type="button" onclick="getFoward()">Go Foward</button>
+    <button type="button" onclick="send_command('front')">Foward</button>
     <br><br><br>
-    <button type="button" onclick="getBackwards()">Go Back</button>
+    <button type="button" onclick="send_command('back')">Back</button>
+    <br><br><br>
+    <button type="button" onclick="send_command('left')">Left</button>
+    <br><br><br>
+    <button type="button" onclick="send_command('right')">Right</button>
+    <br><br><br>
+    <button type="button" onclick="send_command('stop')">STOP</button>
+
 
     <script>
-        function getFoward(){
-            console.log('Foward button clicked')
-            fetch('http://liacar:5000/motor/front')
-        }
+        let href = location.href;
+        console.log(href)
 
-        function getBackwards(){
-            console.log('Backward button clicked')
-            fetch('http://liacar:5000/motor/back')
+        document.getElementById("camera_view").src=href + "video_feed/test"
+
+        function send_command(command){
+            console.log('Command: ' + command)
+            fetch(href + 'motor/' + command)
         }
     </script>
 </body>

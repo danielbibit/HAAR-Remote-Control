@@ -38,9 +38,27 @@ def motor_front():
 
     return 'Ok'
 
+@app.route('/motor/left')
+def motor_left():
+    motor_queue.put('left')
+
+    return 'Ok'
+
+@app.route('/motor/right')
+def motor_right():
+    motor_queue.put('right')
+
+    return 'Ok'
+
 @app.route('/motor/back')
 def motor_back():
     motor_queue.put('back')
+
+    return 'Ok'
+
+@app.route('/motor/stop')
+def motor_stop():
+    motor_queue.put('stop')
 
     return 'Ok'
 
