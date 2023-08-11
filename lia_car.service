@@ -1,0 +1,13 @@
+[Unit]
+Description=Auto Launch lia car script
+
+[Service]
+User=pi
+Restart=always
+RestartSec=3
+WorkingDirectory=/home/pi/HAAR-Remote-Control
+ExecStart=/usr/bin/python3 /home/pi/HAAR-Remote-Control/run.py
+Nice=-20
+
+[Install]
+WantedBy=default.target

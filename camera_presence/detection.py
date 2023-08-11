@@ -65,7 +65,7 @@ class Detection:
                     h = int(_h)
 
                     if self.write_to_flask_enabled:
-                        cv2.rectangle(baseImage, (x-10, y-20), (x + w+10 , y + h+20), rectangleColor, 2)
+                        cv2.rectangle(baseImage, (x-10, y-10), (x + w+10 , y + h+10), rectangleColor, 2)
 
 
             if self.write_to_flask_enabled and self.frame_counter % self.web_fps:
