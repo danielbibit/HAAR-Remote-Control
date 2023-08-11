@@ -8,7 +8,7 @@ class Detection:
         self.frame_counter = 0
 
         self.write_to_flask_enabled = True
-        self.web_fps = 15
+        self.web_fps = 10
         self.feed_queue = feed_queue
         self.motor_queue = motor_queue
 
@@ -59,6 +59,7 @@ class Detection:
                 for (_x,_y,_w,_h) in faces:
                     print('GOT IT!')
                     self.motor_queue.put('stop')
+                    self.motor_queue.put('beep')
                     x = int(_x)
                     y = int(_y)
                     w = int(_w)

@@ -6,13 +6,26 @@ class Control:
     def __init__(self, queue):
         # [1_frente, 1_tras, 2_frente, 2_tras]
         self.pins = [21, 26, 19, 13]
+
+        self.buzzer_pin = 18
+
         GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
+        GPIO.setwarnings(False)
+        GPIO.setup(self.buzzer_pin, GPIO.OUT)
+
         for pin in self.pins:
             GPIO.setup(pin, GPIO.OUT)
             GPIO.output(pin, GPIO.LOW)
 
         self.queue = queue
         self.turn_time = 0.25
+        Thread(target=self.beep, args=(0.6, )).start()
+
+    def beep(self, delay):
+        pwm = GPIO.PWM(self.buzzer_pin, 150)
+        pwm.start(85)
+        time.sleep(delay)
+        pwm.stop()
 
     def front(self):
         print('From motor thread, front')
@@ -71,6 +84,8 @@ class Control:
                 self.right()
             elif data == 'stop':
                 self.stop()
+            elif data == 'beep':
+                Thread(target=self.beep, args=(0.1, )).start()
 
     def run(self):
         # self.test_motor(3)
