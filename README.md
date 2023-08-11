@@ -25,11 +25,6 @@ systemctl status lia_car
 * password: emclia2023
 * host: 192.168.13.1
 
-## Train HAAR
-1. Prepare negatives
-2. Prepare positives
-3. Train
-
 ## How to run
 ```sh
 systemctl stop lia_car
